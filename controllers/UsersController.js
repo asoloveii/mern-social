@@ -48,11 +48,11 @@ class UsersController {
       }
 
       if (!currentUser.friends.includes(friend._id)) {
-        await currentUser.friends.push(friend.id)
-        await friend.friends.push(currentUser.id)
+        await currentUser.friends.push(friend._id)
+        await friend.friends.push(currentUser._id)
       } else {
-        await currentUser.friends.pull(friend.id)
-        await friend.friends.pull(currentUser.id)
+        await currentUser.friends.pull(friend._id)
+        await friend.friends.pull(currentUser._id)
       }
 
       await currentUser.save()
