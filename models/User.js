@@ -1,4 +1,4 @@
-const { mode, Schema, Types } = require("mongoose")
+const { model, Schema, Types } = require("mongoose")
 
 const User = new Schema({
   name: {
@@ -9,10 +9,11 @@ const User = new Schema({
     coverPic: { type: String, default: "" },
     profilePic: { type: String, default: "" }
   },
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
   desc: { type: String, default: "" },
   age: { type: Number },
   friends: [{ type: Types.ObjectId }],
-  birthday: { type: Date, required: false },
 }, { timestamps: true })
 
 module.exports = model("User", User)
