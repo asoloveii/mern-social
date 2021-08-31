@@ -14,8 +14,8 @@ export const loginAPI = (email, password) => {
   return axios.post('/auth/login', { email, password })
 }
 
-export const registerAPI = (email, password) => {
-  return axios.post('/auth/register', { email, password })
+export const registerAPI = (data) => {
+  return axios.post('/auth/register', data)
 }
 
 // USERS ROUTES
