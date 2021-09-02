@@ -1,0 +1,33 @@
+.form-post {
+  box-shadow: 0px 7px 28px 7px rgba(34, 60, 80, 0.23);
+  border-radius: 10px;
+  padding: 10px 20px;
+  position: relative;
+  padding-bottom: 56px; 
+
+  .profilePic {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .input {
+    margin: 0 10px;
+  }
+
+  .icon {
+    cursor: pointer;
+  }
+
+  .submit {
+    margin-top: 10px;
+    position: absolute;
+    right: 10px;
+  }
+
+  .wrapper {
+    display: flex;
+    align-items: center;
+  }
+}

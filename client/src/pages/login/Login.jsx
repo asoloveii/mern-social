@@ -1,15 +1,16 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { loginThunk } from "../../store/authReducer"
 import './login.scss'
 
-export default function Login({ history }) {
+export default function Login() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
   const [error, setError] = useState("")
   const dispatch = useDispatch()
+  const history = useHistory()
 
   const submitHandler = (e) => {
     e.preventDefault()
@@ -21,7 +22,7 @@ export default function Login({ history }) {
       console.log(e.response.message)
     }
 
-    // !error && history.push('/')
+    history.push('/')
   }
 
   return (
