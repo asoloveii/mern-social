@@ -11,7 +11,6 @@ let initialState = {
 export const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOGIN:
-      debugger;
       return {
         ...state,
         user: { ...action.payload },

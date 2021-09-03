@@ -43,7 +43,7 @@ export const addToFriends = (userId, friendId) => {
 // POSTS ROUTES
 
 export const createPostAPI = (data) => {
-  return instance.put(`/posts/`, data)
+  return instance.post(`/posts/`, data)
 }
 
 export const updatePostAPI = (postId, data) => {

@@ -113,10 +113,56 @@ class PostsController {
 
       res.status(201).json({
         success: true,
-        post
+        comment
       })
     } else {
       return next(new ErrorResponse("You can't like posts", 400))
+    }
+  }
+
+  async getCommentsPost(req, res, next) {
+    if (req.user) {
+      const { postId } = req.params.id
+      const comments = await Comment.find({ postId })
+
+      res.status(200).json({
+        success: true,
+        comments
+      })
+    }
+  }
+
+  async updateCommentPost(req, res, next) {
+    if (req.user) {
+      const { commentId } = req.params.id
+      const comment = await Comment.findById(commentId)
+
+      if (req.user._id === comment.author) {
+        const { desc } = req.body
+
+        comment.desc = desc
+        await comment.save()
+
+        res.status(200).json({
+          success: true,
+          comment
+        })
+      }
+    }
+  }
+
+  async deleteCommentPost(req, res, next) {
+    if (req.user) {
+      const { commentId } = req.params.id
+      const comment = await Comment.findById(commentId)
+
+      if (req.user._id === comment.author) {
+        await Comment.findByIdAndDelete(commentId)
+
+        res.status(200).json({
+          success: true
+        })
+      }
     }
   }
 }
